@@ -8,7 +8,9 @@ function uploaderPlusMain()
     var repoFormData, fnFieldValue, idx, max, field, fieldName, value;
     
     repoFormData = new Packages.org.alfresco.repo.forms.FormData();
-    
+    if(logger.isLoggingEnabled()) {
+    		logger.log("[Uploader plus] - uploaderPlusMain started..");
+    }
     try {
         
         // Prevents Flash- and IE8-sourced "null" values being set for those parameters where they are invalid.
@@ -55,6 +57,9 @@ function uploaderPlusMain()
                     }
             }
         }
+        if(logger.isLoggingEnabled()) {
+        			logger.log("[Uploader plus] - Saving form, repoFormData: "+repoFormData);
+        }
 
         formService.saveForm("node", model.document.nodeRef, repoFormData);
     }
@@ -69,7 +74,7 @@ function uploaderPlusMain()
         }
         else {
             e.code = 500;
-            e.message = "Unexpected error occurred during upload of new content.";
+            e.message = "[Uploader plus] - Unexpected error occurred during upload of new content!";
         }
         throw e;
     }
