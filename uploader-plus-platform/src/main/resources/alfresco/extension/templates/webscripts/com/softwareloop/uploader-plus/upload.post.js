@@ -5,7 +5,7 @@
 
 function uploaderPlusMain()
 {
-    var repoFormData, fnFieldValue, idx, max, field, fieldName, value;
+    var repoFormData, fnFieldValue, idx, max, field, fieldName, value, name, destNode;
     
     repoFormData = new Packages.org.alfresco.repo.forms.FormData();
     if(logger.isLoggingEnabled()) {
@@ -24,7 +24,7 @@ function uploaderPlusMain()
         {
             field = formdata.fields[idx];
             fieldName = String(field.name);
-            
+
             switch (fieldName.toLowerCase())
             {
                 case "filename":
@@ -41,6 +41,7 @@ function uploaderPlusMain()
                 case "overwrite":
                 case "thumbnails":
                 case "updatenameandmimetype":
+                case "prop_cm_name":
                 case "createdirectory":
                     // ignore all special upload fields
                     break;
